@@ -1,0 +1,22 @@
+{
+  "name": "sisdb",
+  "version": "1.0.0",
+  "description": "This is a School Information System Database initializer ",
+  "main": "db_init.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dominykasbrezgys/SISdb.git"
+  },
+  "author": "Dominykas Brezgys",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dominykasbrezgys/SISdb/issues"
+  },
+  "homepage": "https://github.com/dominykasbrezgys/SISdb#readme",
+  "dependencies": {
+    "mysql": "^2.15.0"
+  }
+}
