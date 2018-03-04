@@ -50,12 +50,13 @@ con.connect(function(err) {
 
     var entity3 = "Student"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity3 +
-        " ( id INT PRIMARY KEY, " +
+        " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " FirstName VARCHAR(255), " +
         " LastName VARCHAR(255), " +
+        " Username VARCHAR(255), " +
         " Gender VARCHAR(255), " +
-        " DateOfBirth DATETIME, " +
-        " CountryOfOrigin DATETIME, " +
+        " DateOfBirth DATE, " +
+        " CountryOfOrigin VARCHAR(255), " +
         " EntryYear YEAR, " +
         " Level VARCHAR(255), " +
         " CourseID INT, " +
@@ -76,7 +77,8 @@ con.connect(function(err) {
         " ModuleName VARCHAR(255), " +
         " CourseID INT, " +
         " Description VARCHAR(255), " +
-        " NumberOfCredits TINYINT)";
+        " NumberOfCredits TINYINT, "+
+        " Semester VARCHAR(255))";
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
@@ -177,7 +179,7 @@ con.connect(function(err) {
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
         console.log(entity10 + " table created...");
-        con.end();
+        //con.end();
     });
-
+    con.end();
 });
