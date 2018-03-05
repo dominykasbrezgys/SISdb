@@ -75,7 +75,6 @@ con.connect(function(err) {
     var sql = "CREATE TABLE IF NOT EXISTS " + entity4 +
         " ( ModuleCode VARCHAR(255) PRIMARY KEY, " +
         " ModuleName VARCHAR(255), " +
-        " CourseID INT, " +
         " Description VARCHAR(255), " +
         " NumberOfCredits TINYINT, "+
         " Semester VARCHAR(255))";
@@ -85,8 +84,21 @@ con.connect(function(err) {
         console.log(entity4 + " table created...");
     });
 
-    var entity5 = "Coursework"
+    var entity5 = "CourseModule"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity5 +
+        " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
+        " ModuleCode VARCHAR(255), " +
+        " CourseID INT, " +
+        " FOREIGN KEY (CourseID) REFERENCES Course(id) ON DELETE CASCADE, " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE SET NULL)";
+
+    con.query(sql, function(err, result, fields) {
+        if (err) throw err;
+        console.log(entity5 + " table created...");
+    });
+
+    var entity6 = "Coursework"
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity6 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
@@ -103,23 +115,10 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity5 + " table created...");
-    });
-
-    var entity6 = "Assessing"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity6 +
-        " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
-        " AcademicStaffID INT, " +
-        " ModuleCode VARCHAR(255), " +
-        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
-        " FOREIGN KEY (AcademicStaffID) REFERENCES AcademicStaff(id) ON DELETE CASCADE)";
-
-    con.query(sql, function(err, result, fields) {
-        if (err) throw err;
         console.log(entity6 + " table created...");
     });
 
-    var entity7 = "Teaching"
+    var entity7 = "Assessing"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity7 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " AcademicStaffID INT, " +
@@ -132,8 +131,21 @@ con.connect(function(err) {
         console.log(entity7 + " table created...");
     });
 
-    var entity8 = "Enrolment"
+    var entity8 = "Teaching"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity8 +
+        " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
+        " AcademicStaffID INT, " +
+        " ModuleCode VARCHAR(255), " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
+        " FOREIGN KEY (AcademicStaffID) REFERENCES AcademicStaff(id) ON DELETE CASCADE)";
+
+    con.query(sql, function(err, result, fields) {
+        if (err) throw err;
+        console.log(entity8 + " table created...");
+    });
+
+    var entity9 = "Enrolment"
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity9 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
@@ -146,11 +158,11 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity8 + " table created...");
+        console.log(entity9 + " table created...");
     });
 
-    var entity9 = "Transfer"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity9 +
+    var entity10 = "Transfer"
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity10 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " StudentID INT, " +
         " PreviousCourseID INT, " +
@@ -162,11 +174,11 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity9 + " table created...");
+        console.log(entity10 + " table created...");
     });
 
-    var entity10 = "Exam"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity10 +
+    var entity11 = "Exam"
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity11 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
@@ -178,7 +190,7 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity10 + " table created...");
+        console.log(entity11 + " table created...");
         //con.end();
     });
     con.end();
