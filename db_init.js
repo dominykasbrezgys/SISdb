@@ -73,8 +73,7 @@ con.connect(function(err) {
 
     var entity4 = "Module"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity4 +
-        " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
-        " ModuleCode VARCHAR(255), " +
+        " ( ModuleCode VARCHAR(255) PRIMARY KEY, " +
         " ModuleName VARCHAR(255), " +
         " CourseID INT, " +
         " Description VARCHAR(255), " +
@@ -89,7 +88,7 @@ con.connect(function(err) {
     var entity5 = "Coursework"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity5 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
-        " ModuleID INT, " +
+        " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
         " Number INT, " +
         " SetDate DATETIME, " +
@@ -99,7 +98,7 @@ con.connect(function(err) {
         " MaxMark TINYINT, " +
         " RawMark TINYINT, " +
         " Notes VARCHAR(255), " +
-        " FOREIGN KEY (ModuleID) REFERENCES Module(id) ON DELETE SET NULL, " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE SET NULL, " +
         " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE SET NULL)";
 
     con.query(sql, function(err, result, fields) {
@@ -111,8 +110,8 @@ con.connect(function(err) {
     var sql = "CREATE TABLE IF NOT EXISTS " + entity6 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " AcademicStaffID INT, " +
-        " ModuleID INT, " +
-        " FOREIGN KEY (ModuleID) REFERENCES Module(id) ON DELETE CASCADE, " +
+        " ModuleCode VARCHAR(255), " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
         " FOREIGN KEY (AcademicStaffID) REFERENCES AcademicStaff(id) ON DELETE CASCADE)";
 
     con.query(sql, function(err, result, fields) {
@@ -124,8 +123,8 @@ con.connect(function(err) {
     var sql = "CREATE TABLE IF NOT EXISTS " + entity7 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " AcademicStaffID INT, " +
-        " ModuleID INT, " +
-        " FOREIGN KEY (ModuleID) REFERENCES Module(id) ON DELETE CASCADE, " +
+        " ModuleCode VARCHAR(255), " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
         " FOREIGN KEY (AcademicStaffID) REFERENCES AcademicStaff(id) ON DELETE CASCADE)";
 
     con.query(sql, function(err, result, fields) {
@@ -136,13 +135,13 @@ con.connect(function(err) {
     var entity8 = "Enrolment"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity8 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
-        " ModuleID INT, " +
+        " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
         " LevelOfStudy TINYINT, " +
         " YearTaken YEAR, " +
         " Semester TINYINT, " +
         " OverallResult TINYINT, " +
-        " FOREIGN KEY (ModuleID) REFERENCES Module(id) ON DELETE CASCADE, " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
         " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE CASCADE)";
 
     con.query(sql, function(err, result, fields) {
@@ -169,12 +168,12 @@ con.connect(function(err) {
     var entity10 = "Exam"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity10 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
-        " ModuleID INT, " +
+        " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
         " Weighting INT, " +
         " MaxMark TINYINT, " +
         " RawMark TINYINT, " +
-        " FOREIGN KEY (ModuleID) REFERENCES Module(id) ON DELETE CASCADE, " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
         " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE CASCADE)";
 
     con.query(sql, function(err, result, fields) {
