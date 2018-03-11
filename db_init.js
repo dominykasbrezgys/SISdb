@@ -1,3 +1,4 @@
+
 var mysql = require('mysql');
 var databaseName = "SISdb"
 
@@ -14,15 +15,15 @@ con.connect(function(err) {
     console.log("Successfully connected to MySQL server!");
 
     //2. Creates Database
-    con.query("CREATE DATABASE "+databaseName, function(err, result) {
+    con.query("CREATE DATABASE " + databaseName, function(err, result) {
         if (err) throw err;
-        console.log("Database "+databaseName+" created");
+        console.log("Database " + databaseName + " created");
     });
 
     //3. Start using the Database
     con.query("USE SISdb", function(err, result) {
         if (err) throw err;
-        console.log("Using "+databaseName);
+        console.log("Using " + databaseName);
     });
 
     //4. Creates Tables in the Database
@@ -76,7 +77,7 @@ con.connect(function(err) {
         " ( ModuleCode VARCHAR(255) PRIMARY KEY, " +
         " ModuleName VARCHAR(255), " +
         " Description VARCHAR(255), " +
-        " NumberOfCredits TINYINT, "+
+        " NumberOfCredits TINYINT, " +
         " Semester VARCHAR(255))";
 
     con.query(sql, function(err, result, fields) {
@@ -110,6 +111,7 @@ con.connect(function(err) {
         " MaxMark TINYINT, " +
         " RawMark TINYINT, " +
         " Notes VARCHAR(255), " +
+        " IsApproved VARCHAR(255), " +
         " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE SET NULL, " +
         " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE SET NULL)";
 
@@ -193,5 +195,19 @@ con.connect(function(err) {
         console.log(entity11 + " table created...");
         //con.end();
     });
+
+    var entity12 = "User"
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity12 +
+        " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
+        " Username VARCHAR(255), " +
+        " Type VARCHAR(255), " +
+        " Password VARCHAR(255))";
+
+    con.query(sql, function(err, result, fields) {
+        if (err) throw err;
+        console.log(entity12 + " table created...");
+    });
+
+
     con.end();
 });
