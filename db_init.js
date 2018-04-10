@@ -1,4 +1,4 @@
-
+//Import npm package for mysql
 var mysql = require('mysql');
 var databaseName = "SISdb"
 
@@ -151,9 +151,8 @@ con.connect(function(err) {
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
-        " LevelOfStudy TINYINT, " +
+        // " LevelOfStudy TINYINT, " +
         " YearTaken YEAR, " +
-        " Semester TINYINT, " +
         " OverallResult TINYINT, " +
         " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
         " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE CASCADE)";
