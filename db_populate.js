@@ -36,12 +36,12 @@ con.connect(function(err) {
 
     //3. Populating Course table
     var values = [
-        ['Computer Science', 'BSc'],
-        ['Computer Science', 'MEng,BSc'],
-        ['Advanced Computer Science (Cloud Computing)', 'MSc']
+        ['Computer Science', '3', 'BSc'],
+        ['Computer Science','4', 'MEng,BSc'],
+        ['Advanced Computer Science (Cloud Computing)', '1' ,'MSc']
     ];
 
-    var sql = "INSERT INTO Course (CourseName, Qualification) VALUES ?";
+    var sql = "INSERT INTO Course (CourseName, Duration, Qualification) VALUES ?";
     con.query(sql, [values], function(err, result) {
         if (err) throw err;
         console.log("Course Table has been populated!");
@@ -399,14 +399,17 @@ con.connect(function(err) {
 
                         if (student['Level'] == 5) {
                             yearTaken = student['EntryYear'];
+                            levelOfStudy = student['Level'];
                         } else if (student['Level'] == 4 && (Number(module['ModuleCode'].charAt(4)) == 5) ) {
                             yearTaken = student['EntryYear'] + Number(module['ModuleCode'].charAt(4)) - 2;
+                            levelOfStudy = student['Level'];
                         } else {
                             yearTaken = student['EntryYear'] + Number(module['ModuleCode'].charAt(4)) - 1;
+                            levelOfStudy = Number(module['ModuleCode'].charAt(4));
                         }
 
-                        sql = "INSERT INTO Enrolment(ModuleCode, StudentID, YearTaken, OverallResult) VALUES ('" +
-                            module['ModuleCode'] + "'," + student['id'] + "," + yearTaken + ",0)";
+                        sql = "INSERT INTO Enrolment(ModuleCode, StudentID, LevelOfStudy, YearTaken, OverallResult) VALUES ('" +
+                            module['ModuleCode'] + "'," + student['id'] + ","+ levelOfStudy+","+ yearTaken + ",0)";
                         con.query(sql, function(err, result) {
                             if (err) throw err;
                         });

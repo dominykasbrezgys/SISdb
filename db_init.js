@@ -43,6 +43,7 @@ con.connect(function(err) {
     var sql = "CREATE TABLE IF NOT EXISTS " + entity2 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         "CourseName VARCHAR(255), " +
+        "Duration TINYINT, "+
         "Qualification VARCHAR(255))";
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
@@ -151,7 +152,7 @@ con.connect(function(err) {
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
-        // " LevelOfStudy TINYINT, " +
+        " LevelOfStudy TINYINT, " +
         " YearTaken YEAR, " +
         " OverallResult TINYINT, " +
         " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
