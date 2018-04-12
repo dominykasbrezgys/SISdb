@@ -110,7 +110,7 @@ con.connect(function(err) {
         " Weighting TINYINT, " +
         " MaxMark TINYINT, " +
         " Notes VARCHAR(255), " +
-        " IsApproved VARCHAR(255), " +
+        " IsApproved TINYINT DEFAULT 0, " +
         " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE SET NULL)";
 
     con.query(sql, function(err, result, fields) {
