@@ -103,10 +103,10 @@ con.connect(function(err) {
     var sql = "CREATE TABLE IF NOT EXISTS " + entity6 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
-        " Number INT, " +
-        " SetDate DATETIME, " +
-        " DueDate DATETIME, " +
-        " ReturnDate DATETIME, " +
+        " CourseworkNumber TINYINT, " +
+        " SetDate DATE, " +
+        " DueDate DATE, " +
+        " ReturnDate DATE, " +
         " Weighting TINYINT, " +
         " MaxMark TINYINT, " +
         " Notes VARCHAR(255), " +
