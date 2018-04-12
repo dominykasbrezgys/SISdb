@@ -103,39 +103,37 @@ con.connect(function(err) {
     var sql = "CREATE TABLE IF NOT EXISTS " + entity6 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
-        " StudentID INT, " +
         " Number INT, " +
         " SetDate DATETIME, " +
         " DueDate DATETIME, " +
         " ReturnDate DATETIME, " +
         " Weighting TINYINT, " +
         " MaxMark TINYINT, " +
-        " RawMark TINYINT, " +
         " Notes VARCHAR(255), " +
         " IsApproved VARCHAR(255), " +
-        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE SET NULL, " +
-        " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE SET NULL)";
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE SET NULL)";
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
         console.log(entity6 + " table created...");
     });
 
-    var entity7 = "Assessing"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity7 +
-        " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
-        " AcademicStaffID INT, " +
-        " ModuleCode VARCHAR(255), " +
-        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
-        " FOREIGN KEY (AcademicStaffID) REFERENCES AcademicStaff(id) ON DELETE CASCADE)";
+    var entity7 = "CourseworkMark"
+    var sql = "CREATE TABLE IF NOT EXISTS "+entity7+ 
+        " (id INT AUTO_INCREMENT PRIMARY KEY, " +
+        " CourseworkID INT, " +
+        " StudentID INT, " +
+        " RawMark TINYINT, " +
+        " FOREIGN KEY (CourseworkID) REFERENCES Coursework (id) ON DELETE CASCADE, " +
+        " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE CASCADE)";
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
         console.log(entity7 + " table created...");
     });
 
-    var entity8 = "Teaching"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity8 +
+    var entity8 = "Assessing"
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity7 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " AcademicStaffID INT, " +
         " ModuleCode VARCHAR(255), " +
@@ -147,7 +145,20 @@ con.connect(function(err) {
         console.log(entity8 + " table created...");
     });
 
-    var entity9 = "Enrolment"
+    var entity9 = "Teaching"
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity8 +
+        " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
+        " AcademicStaffID INT, " +
+        " ModuleCode VARCHAR(255), " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
+        " FOREIGN KEY (AcademicStaffID) REFERENCES AcademicStaff(id) ON DELETE CASCADE)";
+
+    con.query(sql, function(err, result, fields) {
+        if (err) throw err;
+        console.log(entity9 + " table created...");
+    });
+
+    var entity10 = "Enrolment"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity9 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
@@ -160,10 +171,10 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity9 + " table created...");
+        console.log(entity10 + " table created...");
     });
 
-    var entity10 = "Transfer"
+    var entity11 = "Transfer"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity10 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " StudentID INT, " +
@@ -176,10 +187,10 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity10 + " table created...");
+        console.log(entity11 + " table created...");
     });
 
-    var entity11 = "Exam"
+    var entity12 = "Exam"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity11 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
@@ -192,11 +203,11 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity11 + " table created...");
+        console.log(entity12 + " table created...");
         //con.end();
     });
 
-    var entity12 = "User"
+    var entity13 = "User"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity12 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " Username VARCHAR(255), " +
@@ -205,7 +216,7 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity12 + " table created...");
+        console.log(entity13 + " table created...");
     });
 
 
