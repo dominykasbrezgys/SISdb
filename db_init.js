@@ -111,6 +111,7 @@ con.connect(function(err) {
         " MaxMark TINYINT, " +
         " Notes VARCHAR(255), " +
         " IsApproved TINYINT DEFAULT 0, " +
+        " FileName VARCHAR(255), " +
         " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE SET NULL)";
 
     con.query(sql, function(err, result, fields) {
