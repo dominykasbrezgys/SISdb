@@ -195,12 +195,11 @@ con.connect(function(err) {
     var sql = "CREATE TABLE IF NOT EXISTS " + entity11 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
-        " StudentID INT, " +
         " Weighting INT, " +
         " MaxMark TINYINT, " +
-        " RawMark TINYINT, " +
-        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE, " +
-        " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE CASCADE)";
+        " IsApproved TINYINT, " +
+        " FileName VARCHAR(255), " +
+        " FOREIGN KEY (ModuleCode) REFERENCES Module(ModuleCode) ON DELETE CASCADE)";
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
@@ -208,7 +207,21 @@ con.connect(function(err) {
         //con.end();
     });
 
-    var entity13 = "User"
+    var entity13 = "ExamMark"
+    var sql = "CREATE TABLE IF NOT EXISTS "+entity7+ 
+        " (id INT AUTO_INCREMENT PRIMARY KEY, " +
+        " ExamID INT, " +
+        " StudentID INT, " +
+        " RawMark TINYINT, " +
+        " FOREIGN KEY (ExamID) REFERENCES Exam (id) ON DELETE CASCADE, " +
+        " FOREIGN KEY (StudentID) REFERENCES Student(id) ON DELETE CASCADE)";
+
+    con.query(sql, function(err, result, fields) {
+        if (err) throw err;
+        console.log(entity13 + " table created...");
+    });
+
+    var entity14 = "User"
     var sql = "CREATE TABLE IF NOT EXISTS " + entity12 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " Username VARCHAR(255), " +
@@ -217,7 +230,7 @@ con.connect(function(err) {
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
-        console.log(entity13 + " table created...");
+        console.log(entity14 + " table created...");
     });
 
 
