@@ -21,7 +21,7 @@ con.connect(function(err) {
     });
 
     //3. Start using the Database
-    con.query("USE SISdb", function(err, result) {
+    con.query("USE "+databaseName, function(err, result) {
         if (err) throw err;
         console.log("Using " + databaseName);
     });
@@ -134,7 +134,7 @@ con.connect(function(err) {
     });
 
     var entity8 = "Assessing"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity7 +
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity8 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " AcademicStaffID INT, " +
         " ModuleCode VARCHAR(255), " +
@@ -147,7 +147,7 @@ con.connect(function(err) {
     });
 
     var entity9 = "Teaching"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity8 +
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity9 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " AcademicStaffID INT, " +
         " ModuleCode VARCHAR(255), " +
@@ -160,7 +160,7 @@ con.connect(function(err) {
     });
 
     var entity10 = "Enrolment"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity9 +
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity10 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
         " StudentID INT, " +
@@ -176,7 +176,7 @@ con.connect(function(err) {
     });
 
     var entity11 = "Transfer"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity10 +
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity11 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " StudentID INT, " +
         " PreviousCourseID INT, " +
@@ -192,7 +192,7 @@ con.connect(function(err) {
     });
 
     var entity12 = "Exam"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity11 +
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity12 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
         " Weighting INT, " +
@@ -208,7 +208,7 @@ con.connect(function(err) {
     });
 
     var entity13 = "ExamMark"
-    var sql = "CREATE TABLE IF NOT EXISTS "+entity7+ 
+    var sql = "CREATE TABLE IF NOT EXISTS "+entity13+ 
         " (id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ExamID INT, " +
         " StudentID INT, " +
@@ -222,7 +222,7 @@ con.connect(function(err) {
     });
 
     var entity14 = "User"
-    var sql = "CREATE TABLE IF NOT EXISTS " + entity12 +
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity14 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " Username VARCHAR(255), " +
         " Type VARCHAR(255), " +
