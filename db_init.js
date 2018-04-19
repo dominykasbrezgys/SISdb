@@ -244,6 +244,20 @@ stdin.addListener("data", function(dbPassword) {
             console.log(entity14 + " table created...");
         });
 
+        var entity15 = "SemesterWeek"
+        var sql = "CREATE TABLE IF NOT EXISTS " + entity15 +
+            " (Year YEAR," +
+            " SemesterNumber TINYINT," +
+            " WeekNumber TINYINT," +
+            " StartDate DATE," +
+            " EndDate DATE," +
+            " PRIMARY KEY (Year, SemesterNumber,WeekNumber,StartDate,EndDate))";
+
+        con.query(sql, function(err, result, fields) {
+            if (err) throw err;
+            console.log(entity15 + " table created...");
+        });
+
 
         con.end();
     });
