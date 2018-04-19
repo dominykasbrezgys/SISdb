@@ -246,7 +246,7 @@ stdin.addListener("data", function(dbPassword) {
 
         var entity15 = "SemesterWeek"
         var sql = "CREATE TABLE IF NOT EXISTS " + entity15 +
-            " (Year YEAR," +
+            " (YearOfStudy YEAR," +
             " SemesterNumber TINYINT," +
             " WeekNumber TINYINT," +
             " StartDate DATE," +
