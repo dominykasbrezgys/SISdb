@@ -233,6 +233,20 @@ con.connect(function(err) {
         console.log(entity14 + " table created...");
     });
 
+    var entity15 = "SemesterWeek"
+    var sql = "CREATE TABLE IF NOT EXISTS " + entity15 +
+        " (YearOfStudy YEAR," +
+        " SemesterNumber TINYINT," +
+        " WeekNumber TINYINT," +
+        " StartDate DATE," +
+        " EndDate DATE," +
+        " PRIMARY KEY (YearOfStudy, SemesterNumber,WeekNumber,StartDate,EndDate))";
+
+    con.query(sql, function(err, result, fields) {
+        if (err) throw err;
+        console.log(entity15 + " table created...");
+    });
+
 
     con.end();
 });
