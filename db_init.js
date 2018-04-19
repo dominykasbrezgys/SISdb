@@ -240,7 +240,7 @@ con.connect(function(err) {
         " WeekNumber TINYINT," +
         " StartDate DATE," +
         " EndDate DATE," +
-        " PRIMARY KEY (YearOfStudy, SemesterNumber,WeekNumber,StartDate,EndDate))";
+        " PRIMARY KEY (YearOfStudy, SemesterNumber,WeekNumber))";
 
     con.query(sql, function(err, result, fields) {
         if (err) throw err;
