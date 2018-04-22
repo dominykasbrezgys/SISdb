@@ -71,7 +71,7 @@ con.connect(function(err) {
             CourseID = 1;
             PersonalTutorID = faker.random.number({
                 min: 1,
-                max: 20
+                max: 40
             });
             RegistrationStatus = 'RE';
             values.push([FirstName, LastName, Username, Gender, DateOfBirth, CountryOfOrigin, EntryYear, Level, CourseID, PersonalTutorID, RegistrationStatus]);
@@ -105,7 +105,7 @@ con.connect(function(err) {
             CourseID = 2;
             PersonalTutorID = faker.random.number({
                 min: 1,
-                max: 20
+                max: 40
             });
             RegistrationStatus = 'RE';
             values.push([FirstName, LastName, Username, Gender, DateOfBirth, CountryOfOrigin, EntryYear, Level, CourseID, PersonalTutorID, RegistrationStatus]);
@@ -138,7 +138,7 @@ con.connect(function(err) {
         CourseID = 3;
         PersonalTutorID = faker.random.number({
             min: 1,
-            max: 20
+            max: 40
         });
         RegistrationStatus = 'RE';
         values.push([FirstName, LastName, Username, Gender, DateOfBirth, CountryOfOrigin, EntryYear, Level, CourseID, PersonalTutorID, RegistrationStatus]);
