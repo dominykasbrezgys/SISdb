@@ -195,7 +195,7 @@ con.connect(function(err) {
     var sql = "CREATE TABLE IF NOT EXISTS " + entity12 +
         " ( id INT AUTO_INCREMENT PRIMARY KEY, " +
         " ModuleCode VARCHAR(255), " +
-        " Weighting INT, " +
+        " Weighting TINYINT, " +
         " MaxMark TINYINT, " +
         " IsApproved TINYINT, " +
         " FileName VARCHAR(255), " +
